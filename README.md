@@ -1,16 +1,13 @@
-# Language Detection Web App (Cloud Based)
+# Language Detector
+
+This is a Flask-based web app that detects language from user input and stores results in Firebase Firestore.
 
 ## Features
-- Detects language from user input
-- Supports multiple languages 
-- Saves results in Firebase Cloud
-- Displays success message
+- Detects multiple languages (including Marathi)
+- Saves result to cloud
+- Simple UI
 
 ## Tech Stack
-- Flask
+- Python (Flask)
+- Langdetect
 - Firebase Firestore
-- HTML/CSS
-
-## Run
-pip install -r requirements.txt
-python app.py
