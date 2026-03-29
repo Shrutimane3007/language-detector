@@ -3,18 +3,22 @@ from langdetect import detect, DetectorFactory
 import firebase_admin
 from firebase_admin import credentials, db
 from datetime import datetime
+import os
+import json
 
 DetectorFactory.seed = 0
 
 app = Flask(__name__)
 
-# Firebase setup
-cred = credentials.Certificate("language-detector-firebase-key.json")
+# Firebase setup (UPDATED)
+firebase_key = json.loads(os.environ["FIREBASE_KEY"])
+cred = credentials.Certificate(firebase_key)
+
 firebase_admin.initialize_app(cred, {
     "databaseURL": "https://language-detector-eab83-default-rtdb.firebaseio.com/"
 })
 
-# Language Mapping (15+ languages)
+# Language Mapping
 lang_map = {
     "en": "English",
     "hi": "Hindi",
@@ -73,7 +77,7 @@ def index():
     return render_template("index.html", result=result, text=text)
 
 
-#  HISTORY
+# HISTORY
 @app.route("/history")
 def history():
     ref = db.reference("history")
@@ -90,14 +94,14 @@ def history():
     return render_template("history.html", history=history_list)
 
 
-#  DELETE SINGLE
+# DELETE SINGLE
 @app.route("/delete/<id>")
 def delete(id):
     db.reference("history").child(id).delete()
     return redirect(url_for("history"))
 
 
-#  CLEAR ALL
+# CLEAR ALL
 @app.route("/clear")
 def clear():
     db.reference("history").delete()
@@ -105,4 +109,4 @@ def clear():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
