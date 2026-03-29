@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <style>
+        body {
+            font-family: 'Segoe UI';
+            background: #0f172a;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text-section {
+            text-align: left;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .delete {
+            background: #ef4444;
+        }
+
+        .clear {
+            background: #f97316;
+            margin: 20px;
+            display: inline-block;
+        }
+
+        a {
+            color: #60a5fa;
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📜 History</h2>
+
+<a href="/clear" class="btn clear">Clear All</a>
+
+<div class="container">
+    {% for item in history %}
+    <div class="card">
+        
+        <div class="text-section">
+            <p>
+                <span class="icon">📝</span>
+                <b>{{ item.text }}</b>
+            </p>
+            <p>
+                <span class="icon">🌐</span>
+                {{ item.language }} | {{ item.time }}
+            </p>
+        </div>
+
+        <a href="/delete/{{ item.id }}" class="btn delete">🗑</a>
+    </div>
+    {% endfor %}
+</div>
+
+<a href="/">⬅ Back</a>
+
+</body>
+</html>

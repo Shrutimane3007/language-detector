@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Language Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI';
+            background: #0f172a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+            width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #3b82f6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #020617;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #60a5fa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>🌍 Language Detector</h2>
+
+    <form method="POST">
+        <textarea name="text" placeholder="Enter your text..." required>{{ text }}</textarea>
+        <button type="submit">Detect</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <p><b>Text:</b> {{ text }}</p>
+        <p><b>Language Detected:</b> {{ result }}</p>
+    </div>
+    {% endif %}
+
+    <a href="/history">View History →</a>
+</div>
+
+</body>
+</html>
