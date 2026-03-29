@@ -11,3 +11,6 @@ This is a Flask-based web app that detects language from user input and stores r
 - Python (Flask)
 - Langdetect
 - Firebase Firestore
+
+# deploy
+- deployed using render Github
